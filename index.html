@@ -1,0 +1,1572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ATARI FARMS Sexy Farming | Avoglow</title>
+  <meta name="description" content="ATARI FARMS Sexy Farming is a climate-smart agribusiness from Uganda creating avocado-based beauty, hair care, and wellness products under Avoglow.">
+  <style>
+    :root {
+      --forest: #0f3b2d;
+      --green: #1a7650;
+      --leaf: #5aa140;
+      --gold: #c68a2e;
+      --copper: #c86d3b;
+      --cream: #fbf5e8;
+      --paper: #fffdf8;
+      --ink: #17231d;
+      --muted: #647064;
+      --line: rgba(23, 35, 29, 0.12);
+      --glass: rgba(255, 255, 255, 0.74);
+      --shadow: 0 22px 70px rgba(15, 59, 45, 0.16);
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+
+    body.drawer-open,
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.24);
+      background: rgba(15, 59, 45, 0.82);
+      color: #fff;
+      backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      width: min(1220px, calc(100% - 32px));
+      min-height: 76px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand-left {
+      min-width: 230px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .wordmark {
+      min-width: 0;
+    }
+
+    .wordmark strong,
+    .wordmark span {
+      display: block;
+      letter-spacing: 0;
+    }
+
+    .wordmark strong {
+      font-size: 1rem;
+      font-weight: 900;
+    }
+
+    .wordmark span {
+      color: #bfe39b;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 22px;
+      color: rgba(255, 255, 255, 0.84);
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .header-logo {
+      flex: 0 0 auto;
+      width: 54px;
+      height: 54px;
+      padding: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.32);
+      border-radius: 50%;
+      background: #fff;
+    }
+
+    .header-logo img {
+      border-radius: 50%;
+      object-fit: contain;
+    }
+
+    .icon-btn {
+      position: relative;
+      width: 44px;
+      height: 44px;
+      display: inline-grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: 50%;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.11);
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -6px;
+      right: -4px;
+      min-width: 21px;
+      height: 21px;
+      padding: 0 5px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      color: var(--forest);
+      background: #d7ec71;
+      font-size: 0.72rem;
+      font-weight: 900;
+    }
+
+    .hero {
+      position: relative;
+      min-height: calc(100vh - 76px);
+      padding: 88px 24px 42px;
+      display: flex;
+      align-items: end;
+      overflow: hidden;
+      color: #fff;
+      background:
+        linear-gradient(105deg, rgba(10, 32, 24, 0.95) 0%, rgba(15, 59, 45, 0.78) 47%, rgba(15, 59, 45, 0.32) 100%),
+        url("my works/product pictures_7.png") center/cover;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("my works/AVOGLOW Logo(1).png") right 8vw center/44vw auto no-repeat;
+      opacity: 0.16;
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -12vw -22vw auto;
+      width: 46vw;
+      height: 46vw;
+      min-width: 360px;
+      min-height: 360px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(198, 138, 46, 0.45), rgba(198, 138, 46, 0));
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      width: min(1220px, 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 390px;
+      gap: 40px;
+      align-items: end;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: #d7ec71;
+      font-size: 0.78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1,
+    h2 {
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      max-width: 790px;
+      margin-bottom: 18px;
+      font-size: clamp(3.4rem, 8.8vw, 7.8rem);
+      font-weight: 900;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4.5vw, 4.25rem);
+    }
+
+    h3 {
+      line-height: 1.18;
+      letter-spacing: 0;
+    }
+
+    .hero-copy {
+      max-width: 640px;
+      color: rgba(255, 255, 255, 0.84);
+      font-size: clamp(1rem, 2vw, 1.2rem);
+    }
+
+    .hero-actions,
+    .section-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      min-height: 48px;
+      padding: 0 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      font-weight: 900;
+      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      color: #132117;
+      background: linear-gradient(135deg, #f7cf74, #d7ec71);
+      box-shadow: 0 14px 42px rgba(215, 236, 113, 0.24);
+    }
+
+    .btn-secondary {
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.36);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .btn-dark {
+      color: #fff;
+      background: var(--forest);
+    }
+
+    .glass-panel {
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.13);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .hero-panel {
+      padding: 22px;
+    }
+
+    .hero-panel img {
+      height: 90px;
+      object-fit: contain;
+      padding: 10px;
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    .hero-panel p {
+      margin: 16px 0 0;
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .stats {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .stat {
+      padding: 13px;
+      background: rgba(15, 59, 45, 0.7);
+    }
+
+    .stat b,
+    .stat span {
+      display: block;
+    }
+
+    .stat b {
+      color: #f7cf74;
+      font-size: 1.2rem;
+    }
+
+    .stat span {
+      color: rgba(255, 255, 255, 0.74);
+      font-size: 0.76rem;
+      font-weight: 700;
+    }
+
+    .section {
+      padding: 86px 24px;
+    }
+
+    .section.alt {
+      background:
+        linear-gradient(rgba(251, 245, 232, 0.93), rgba(251, 245, 232, 0.93)),
+        url("my works/AVOGLOW Logo(1).png") center/760px auto no-repeat;
+    }
+
+    .container {
+      width: min(1220px, 100%);
+      margin: 0 auto;
+    }
+
+    .section-head {
+      margin-bottom: 34px;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .section-head p:not(.eyebrow) {
+      max-width: 520px;
+      color: var(--muted);
+    }
+
+    .product-tools {
+      margin-bottom: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .filter-btn {
+      min-height: 38px;
+      padding: 0 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--forest);
+      background: #fff;
+      font-weight: 800;
+    }
+
+    .filter-btn.active {
+      color: #fff;
+      border-color: var(--forest);
+      background: var(--forest);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .product-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      box-shadow: 0 14px 42px rgba(15, 59, 45, 0.07);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .product-media {
+      position: relative;
+      aspect-ratio: 1 / 1.12;
+      background: #f4ecd8;
+    }
+
+    .product-media img {
+      object-position: center;
+    }
+
+    .badge {
+      position: absolute;
+      left: 12px;
+      top: 12px;
+      padding: 6px 9px;
+      border-radius: 999px;
+      color: var(--forest);
+      background: rgba(255, 253, 248, 0.92);
+      font-size: 0.72rem;
+      font-weight: 900;
+    }
+
+    .product-body {
+      padding: 16px;
+    }
+
+    .product-body h3 {
+      min-height: 44px;
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+
+    .product-body p {
+      min-height: 68px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .meta span {
+      padding: 5px 8px;
+      border-radius: 999px;
+      color: #34443a;
+      background: #f4ecd8;
+      font-size: 0.72rem;
+      font-weight: 800;
+    }
+
+    .product-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .price {
+      color: var(--forest);
+      font-weight: 900;
+    }
+
+    .small-btn {
+      min-height: 40px;
+      padding: 0 13px;
+      border: 0;
+      border-radius: var(--radius);
+      color: #fff;
+      background: var(--green);
+      font-weight: 900;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 0.92fr);
+      gap: 42px;
+      align-items: center;
+    }
+
+    .story-media {
+      min-height: 560px;
+      overflow: hidden;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      background: var(--forest);
+    }
+
+    .story-media img {
+      object-position: center;
+    }
+
+    .story-copy p {
+      color: var(--muted);
+    }
+
+    .values {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .value-card {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    .value-card strong {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--forest);
+      font-size: 1.05rem;
+    }
+
+    .value-card p {
+      margin-bottom: 0;
+      font-size: 0.92rem;
+    }
+
+    .journey {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .journey-step {
+      min-height: 150px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+    }
+
+    .journey-step span {
+      display: inline-grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      margin-bottom: 12px;
+      border-radius: 50%;
+      color: #fff;
+      background: var(--forest);
+      font-weight: 900;
+    }
+
+    .journey-step h3 {
+      margin-bottom: 8px;
+      font-size: 0.98rem;
+    }
+
+    .journey-step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .split-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .login-card,
+    .admin-card {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      box-shadow: 0 14px 42px rgba(15, 59, 45, 0.07);
+    }
+
+    .form-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .field {
+      display: grid;
+      gap: 6px;
+      color: #425047;
+      font-size: 0.86rem;
+      font-weight: 800;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      min-height: 46px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 11px 12px;
+      color: var(--ink);
+      background: #fffdf8;
+      outline: none;
+    }
+
+    .field textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .admin-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin: 16px 0;
+    }
+
+    .admin-metric {
+      padding: 14px;
+      border-radius: var(--radius);
+      color: #fff;
+      background: var(--forest);
+    }
+
+    .admin-metric b,
+    .admin-metric span {
+      display: block;
+    }
+
+    .admin-metric b {
+      font-size: 1.25rem;
+    }
+
+    .admin-metric span {
+      color: rgba(255, 255, 255, 0.74);
+      font-size: 0.76rem;
+      font-weight: 800;
+    }
+
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: var(--radius);
+      font-size: 0.86rem;
+    }
+
+    .admin-table th,
+    .admin-table td {
+      padding: 11px 10px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+    }
+
+    .admin-table th {
+      color: var(--forest);
+      background: #f4ecd8;
+    }
+
+    .checkout-band {
+      padding: 44px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 430px);
+      gap: 30px;
+      align-items: center;
+      border-radius: var(--radius);
+      color: #fff;
+      background:
+        linear-gradient(90deg, rgba(15, 59, 45, 0.96), rgba(26, 118, 80, 0.78)),
+        url("my works/product pictures_8.png") center/cover;
+      box-shadow: var(--shadow);
+    }
+
+    .checkout-band p {
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .checkout-band .field {
+      color: rgba(255, 255, 255, 0.84);
+    }
+
+    .checkout-band .field input,
+    .checkout-band .field select,
+    .checkout-band .field textarea {
+      border-color: rgba(255, 255, 255, 0.24);
+      color: #fff;
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .checkout-band .field input::placeholder,
+    .checkout-band .field textarea::placeholder {
+      color: rgba(255, 255, 255, 0.56);
+    }
+
+    .site-footer {
+      padding: 44px 24px;
+      color: rgba(255, 255, 255, 0.72);
+      background: #101a14;
+    }
+
+    .footer-grid {
+      width: min(1220px, 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr repeat(3, 1fr);
+      gap: 26px;
+    }
+
+    .footer-grid img {
+      width: 130px;
+      height: 60px;
+      object-fit: contain;
+      border-radius: var(--radius);
+      background: #fff;
+      margin-bottom: 14px;
+    }
+
+    .footer-grid h3,
+    .footer-grid h4 {
+      margin: 0 0 10px;
+      color: #fff;
+    }
+
+    .footer-grid p,
+    .footer-grid a {
+      display: block;
+      margin: 0 0 8px;
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .drawer-backdrop,
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      display: none;
+      background: rgba(7, 18, 13, 0.56);
+    }
+
+    .drawer-open .drawer-backdrop,
+    .modal-open .modal-backdrop {
+      display: block;
+    }
+
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 90;
+      width: min(440px, 100%);
+      height: 100vh;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      background: var(--paper);
+      box-shadow: -28px 0 70px rgba(7, 18, 13, 0.3);
+      transform: translateX(105%);
+      transition: transform 220ms ease;
+    }
+
+    .drawer-open .cart-drawer {
+      transform: translateX(0);
+    }
+
+    .drawer-head,
+    .cart-total {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .drawer-head {
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .drawer-head h2 {
+      margin: 0;
+      font-size: 1.3rem;
+    }
+
+    .close-btn {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: #fff;
+      font-size: 1.35rem;
+      line-height: 1;
+    }
+
+    .cart-items {
+      flex: 1;
+      overflow: auto;
+      padding: 12px 0;
+    }
+
+    .cart-item {
+      display: grid;
+      grid-template-columns: 72px 1fr auto;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .cart-item img {
+      width: 72px;
+      height: 72px;
+      border-radius: var(--radius);
+    }
+
+    .cart-item h3 {
+      margin: 0;
+      font-size: 0.92rem;
+    }
+
+    .cart-item p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+
+    .qty {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .qty button {
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: #fff;
+      font-weight: 900;
+    }
+
+    .drawer-foot {
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+
+    .cart-total {
+      margin-bottom: 12px;
+      font-size: 1.08rem;
+      font-weight: 900;
+    }
+
+    .empty {
+      padding: 42px 0;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .login-modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      z-index: 91;
+      width: min(430px, calc(100% - 28px));
+      padding: 22px;
+      border-radius: var(--radius);
+      background: #fff;
+      box-shadow: var(--shadow);
+      transform: translate(-50%, -44%) scale(0.96);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .modal-open .login-modal {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .login-modal .drawer-head {
+      margin-bottom: 16px;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 22px;
+      z-index: 120;
+      max-width: min(520px, calc(100% - 28px));
+      padding: 12px 15px;
+      border-radius: var(--radius);
+      color: #fff;
+      background: var(--forest);
+      box-shadow: var(--shadow);
+      transform: translate(-50%, 120px);
+      transition: transform 220ms ease;
+      font-weight: 800;
+    }
+
+    .toast.show {
+      transform: translate(-50%, 0);
+    }
+
+    @media (max-width: 1020px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-inner,
+      .story-grid,
+      .split-panel,
+      .checkout-band {
+        grid-template-columns: 1fr;
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .journey {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 680px) {
+      .nav {
+        width: min(100% - 24px, 1220px);
+      }
+
+      .brand-left {
+        min-width: 0;
+        gap: 8px;
+      }
+
+      .wordmark strong {
+        font-size: 0.9rem;
+      }
+
+      .wordmark span {
+        font-size: 0.72rem;
+      }
+
+      .header-logo {
+        width: 46px;
+        height: 46px;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 64px 16px 32px;
+      }
+
+      .hero::before {
+        background-size: 86vw auto;
+        background-position: center 8%;
+      }
+
+      h1 {
+        font-size: clamp(3rem, 15vw, 4.5rem);
+      }
+
+      .section {
+        padding: 62px 16px;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .product-grid,
+      .values,
+      .journey,
+      .admin-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .checkout-band {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand-left" href="#top" aria-label="ATARI FARMS home">
+        <span class="header-logo" aria-hidden="true">
+          <img src="my works/ATARI FARMS LOGO(1).png" alt="">
+        </span>
+        <span class="wordmark">
+          <strong>ATARI FARMS</strong>
+          <span>Sexy farming</span>
+        </span>
+      </a>
+      <div class="nav-links">
+        <a href="#shop">Shop</a>
+        <a href="#story">Company</a>
+        <a href="#sustainability">Sustainability</a>
+        <a href="#account">Login</a>
+        <a href="#admin">Admin</a>
+      </div>
+      <div class="nav-actions">
+        <button class="icon-btn" type="button" data-open-login aria-label="Customer login">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path>
+          </svg>
+        </button>
+        <button class="icon-btn" type="button" data-open-cart aria-label="Open cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 6h15l-1.6 9H7.1z"></path><path d="M6 6 5 3H2"></path><circle cx="9" cy="20" r="1"></circle><circle cx="18" cy="20" r="1"></circle>
+          </svg>
+          <span class="cart-count" data-cart-count>0</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-label="ATARI FARMS hero">
+      <div class="hero-inner">
+        <div>
+          <p class="eyebrow">Uganda-grown avocado innovation</p>
+          <h1>ATARI FARMS Sexy farming</h1>
+          <p class="hero-copy">Climate-smart agriculture, circular agribusiness, and premium avocado-based beauty and wellness products under Avoglow: pure avocado goodness from farm value chains to skin, hair, and everyday rituals.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#shop">Shop Avoglow Products</a>
+            <a class="btn btn-secondary" href="#story">Explore Our Story</a>
+          </div>
+        </div>
+        <aside class="glass-panel hero-panel">
+          <img src="my works/AVOGLOW Logo(1).png" alt="Avoglow pure avocado goodness logo">
+          <p>Avoglow transforms avocado oil, seed by-products, and organic botanicals into cosmetic and wellness products with a premium Ugandan identity.</p>
+          <div class="stats">
+            <div class="stat"><b>1500+</b><span>Smallholder farmers</span></div>
+            <div class="stat"><b>20%</b><span>Production growth</span></div>
+            <div class="stat"><b>360°</b><span>Circular model</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="shop">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Avoglow Store</p>
+            <h2>Pure avocado goodness for beauty, hair, and wellness.</h2>
+          </div>
+          <p>Product images are assigned from the uploaded Avoglow catalogue photos. Prices are prototype UGX retail prices and can be adjusted in the product data.</p>
+        </div>
+        <div class="product-tools" id="productFilters"></div>
+        <div class="product-grid" id="productGrid"></div>
+      </div>
+    </section>
+
+    <section class="section alt" id="story">
+      <div class="container story-grid">
+        <div class="story-media">
+          <img src="my works/product pictures_1.png" alt="ATARI FARMS 100 percent pure cold pressed avocado oil">
+        </div>
+        <div class="story-copy">
+          <p class="eyebrow">Company Profile</p>
+          <h2>Climate-smart farming turned into premium value-added products.</h2>
+          <p>ATARI FARMS Limited focuses on climate-smart agriculture, circular agribusiness, and avocado-based value creation. The company connects smallholder farming with premium consumer goods, giving Uganda-grown avocado a stronger route into beauty, hair care, and wellness markets.</p>
+          <p>Through Avoglow, Atari Farms turns avocado oil, avocado seeds, and related by-products into products such as Pure Avocado Oil, Avocado-Rosemary Oil, Avocado-Lavender Oil, Root & Revive Hair Elixir, Intensive Hair Butter, AvoChai, and other natural wellness concepts.</p>
+          <div class="values">
+            <article class="value-card">
+              <strong>Mission</strong>
+              <p>To build climate-smart avocado value chains that empower farmers, reduce waste, and create premium natural products for everyday wellness.</p>
+            </article>
+            <article class="value-card">
+              <strong>Vision</strong>
+              <p>To become a leading African avocado innovation brand known for sustainability, farmer inclusion, and high-quality beauty and wellness products.</p>
+            </article>
+            <article class="value-card">
+              <strong>Inclusion</strong>
+              <p>Market access, women and youth participation, and farmer empowerment are central to the Atari Farms growth model.</p>
+            </article>
+            <article class="value-card">
+              <strong>Innovation</strong>
+              <p>Avocado by-products are reused creatively, including wellness products such as AvoChai made from avocado seeds.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sustainability">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Circular Agriculture</p>
+            <h2>From farmer to avocado to Avoglow.</h2>
+          </div>
+          <p>The uploaded brand profile highlights circular value chains, production growth, and farmer empowerment. This section turns that into a clear customer-facing story.</p>
+        </div>
+        <div class="journey">
+          <article class="journey-step"><span>1</span><h3>Farmer Network</h3><p>Smallholder farmers grow and supply avocado through stronger market access.</p></article>
+          <article class="journey-step"><span>2</span><h3>Climate-Smart Crop</h3><p>Farming practices support resilient agriculture and quality harvests.</p></article>
+          <article class="journey-step"><span>3</span><h3>Oil Extraction</h3><p>Avocados are transformed into cosmetic-grade oils and rich blends.</p></article>
+          <article class="journey-step"><span>4</span><h3>Beauty Products</h3><p>Avoglow creates skin, hair, and body care from avocado oil and botanicals.</p></article>
+          <article class="journey-step"><span>5</span><h3>Seed Reuse</h3><p>Avocado by-products become wellness concepts such as AvoChai.</p></article>
+          <article class="journey-step"><span>6</span><h3>Shared Growth</h3><p>Value-added products improve margins and tell a premium Ugandan story.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="account">
+      <div class="container split-panel">
+        <article class="login-card">
+          <p class="eyebrow">Customer Account</p>
+          <h2>Login for orders, rewards, and product recommendations.</h2>
+          <p style="color: var(--muted);">This front-end login simulates the customer experience for the demo. A production version can connect to a real database and payment gateway.</p>
+          <form class="form-grid" id="inlineLoginForm">
+            <label class="field">Email address
+              <input type="email" name="email" placeholder="customer@example.com" required>
+            </label>
+            <label class="field">Password
+              <input type="password" name="password" placeholder="••••••••" required>
+            </label>
+            <button class="btn btn-dark" type="submit">Login</button>
+          </form>
+        </article>
+        <article class="admin-card" id="admin">
+          <p class="eyebrow">Admin Dashboard</p>
+          <h2>Store control room.</h2>
+          <p style="color: var(--muted);">Monitor catalogue status, stock, and enquiry flow for Avoglow products.</p>
+          <div class="admin-grid">
+            <div class="admin-metric"><b data-admin-products>7</b><span>Products</span></div>
+            <div class="admin-metric"><b data-admin-stock>0</b><span>Units in stock</span></div>
+            <div class="admin-metric"><b data-admin-cart>UGX 0</b><span>Cart value</span></div>
+          </div>
+          <table class="admin-table">
+            <thead>
+              <tr><th>Product</th><th>Category</th><th>Stock</th></tr>
+            </thead>
+            <tbody id="adminRows"></tbody>
+          </table>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="checkout">
+      <div class="container">
+        <div class="checkout-band">
+          <div>
+            <p class="eyebrow">Checkout</p>
+            <h2>Send an order enquiry.</h2>
+            <p>Customers can review their cart, submit contact details, and let Atari Farms confirm stock, delivery route, wholesale terms, and payment options.</p>
+            <div class="section-actions">
+              <button class="btn btn-primary" type="button" data-open-cart>Review Cart</button>
+            </div>
+          </div>
+          <form class="form-grid" id="checkoutForm">
+            <label class="field">Full name
+              <input type="text" name="name" placeholder="Your name" required>
+            </label>
+            <label class="field">Phone or WhatsApp
+              <input type="tel" name="phone" placeholder="+256 ..." required>
+            </label>
+            <label class="field">Delivery location
+              <select name="location" required>
+                <option value="">Select delivery location</option>
+                <option>Kampala / Wakiso</option>
+                <option>Uganda upcountry delivery</option>
+                <option>Wholesale / retail partner</option>
+                <option>International enquiry</option>
+              </select>
+            </label>
+            <label class="field">Order notes
+              <textarea name="notes" placeholder="Quantity, product sizes, delivery details, or reseller request"></textarea>
+            </label>
+            <button class="btn btn-primary" type="submit">Submit Checkout Enquiry</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div>
+        <img src="my works/ATARI FARMS LOGO(1).png" alt="ATARI FARMS logo">
+        <h3>ATARI FARMS Sexy farming</h3>
+        <p>Climate-smart agriculture, circular agribusiness, farmer empowerment, and avocado-based value-added products from Uganda.</p>
+      </div>
+      <div>
+        <h4>Shop</h4>
+        <a href="#shop">Avocado oils</a>
+        <a href="#shop">Hair care</a>
+        <a href="#shop">AvoChai wellness</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="#story">Mission</a>
+        <a href="#story">Vision</a>
+        <a href="#sustainability">Sustainability</a>
+      </div>
+      <div>
+        <h4>Customer</h4>
+        <a href="#account">Login</a>
+        <a href="#checkout">Checkout</a>
+        <a href="#admin">Admin dashboard</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="drawer-backdrop" data-close-cart></div>
+  <aside class="cart-drawer" aria-label="Shopping cart" aria-hidden="true">
+    <div class="drawer-head">
+      <h2>Your Cart</h2>
+      <button class="close-btn" type="button" data-close-cart aria-label="Close cart">×</button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="drawer-foot">
+      <div class="cart-total">
+        <span>Total</span>
+        <span data-cart-total>UGX 0</span>
+      </div>
+      <a class="btn btn-dark" href="#checkout" data-close-cart>Continue to Checkout</a>
+    </div>
+  </aside>
+
+  <div class="modal-backdrop" data-close-login></div>
+  <aside class="login-modal" aria-label="Customer login modal" aria-hidden="true">
+    <div class="drawer-head">
+      <h2>Customer Login</h2>
+      <button class="close-btn" type="button" data-close-login aria-label="Close login">×</button>
+    </div>
+    <form class="form-grid" id="modalLoginForm">
+      <label class="field">Email address
+        <input type="email" name="email" placeholder="customer@example.com" required>
+      </label>
+      <label class="field">Password
+        <input type="password" name="password" placeholder="••••••••" required>
+      </label>
+      <button class="btn btn-dark" type="submit">Login</button>
+    </form>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const products = [
+      {
+        id: "pure-avocado-oil",
+        name: "ATARI FARMS Pure Cold Pressed Avocado Oil",
+        category: "Skin & Hair Oil",
+        price: 42000,
+        stock: 86,
+        size: "100ml",
+        badge: "100% Pure",
+        image: "my works/product pictures_1.png",
+        description: "Cold pressed avocado oil for dry, damaged skin and hair. A simple hero product from the Atari Farms avocado value chain.",
+        benefits: ["Dry skin", "Hair shine", "Cold pressed"]
+      },
+      {
+        id: "rosemary-oil",
+        name: "Avoglow Avocado Oil with Rosemary",
+        category: "Body Oil",
+        price: 48000,
+        stock: 64,
+        size: "100ml",
+        badge: "Rosemary",
+        image: "my works/product pictures_3.png",
+        description: "Avocado and rosemary body oil designed to hydrate, nourish, and support a clean daily skin ritual.",
+        benefits: ["Hydration", "Rosemary", "Body care"]
+      },
+      {
+        id: "lavender-oil",
+        name: "Avoglow Avocado Oil with Lavender",
+        category: "Body Oil",
+        price: 48000,
+        stock: 58,
+        size: "100ml",
+        badge: "Lavender",
+        image: "my works/product pictures_4.png",
+        description: "A soft lavender avocado oil blend for evening body care, massage, and calming moisture.",
+        benefits: ["Lavender", "Moisture", "Relaxing"]
+      },
+      {
+        id: "root-revive",
+        name: "Root and Revive Triple Active Hair Elixir",
+        category: "Hair Care",
+        price: 55000,
+        stock: 71,
+        size: "50ml",
+        badge: "Hair Elixir",
+        image: "my works/product pictures_5.png",
+        description: "A jojoba, avocado, and castor hair elixir made for scalp comfort, shine, and stronger hair routines.",
+        benefits: ["Jojoba", "Avocado", "Castor"]
+      },
+      {
+        id: "intensive-butter",
+        name: "Avoglow Intensive Hair Butter",
+        category: "Hair Care",
+        price: 60000,
+        stock: 49,
+        size: "100g",
+        badge: "Deep Moisture",
+        image: "my works/product pictures_6.png",
+        description: "Premium hair butter for deep moisture, strength, and length retention with a rich botanical feel.",
+        benefits: ["Strength", "Moisture", "Retention"]
+      },
+      {
+        id: "power-duo",
+        name: "Avoglow Power Duo",
+        category: "Bundles",
+        price: 108000,
+        stock: 36,
+        size: "2-piece",
+        badge: "Bundle",
+        image: "my works/product pictures_7.png",
+        description: "Root and Revive Hair Elixir paired with Intensive Hair Butter for a complete hair care routine.",
+        benefits: ["Routine", "Value set", "Hair care"]
+      },
+      {
+        id: "avochai",
+        name: "AvoChai Caffeine-Free Wellness Chai",
+        category: "Wellness",
+        price: 32000,
+        stock: 92,
+        size: "100g",
+        badge: "Seed Reuse",
+        image: "my works/product pictures_8.png",
+        description: "A caffeine-free wellness chai from avocado seeds, ginger, cinnamon, cardamom, and warm natural spices.",
+        benefits: ["Caffeine-free", "Avocado seeds", "Circular"]
+      }
+    ];
+
+    const state = {
+      cart: {},
+      filter: "All"
+    };
+
+    const formatMoney = (value) => `UGX ${value.toLocaleString("en-UG")}`;
+    const productGrid = document.querySelector("#productGrid");
+    const productFilters = document.querySelector("#productFilters");
+    const cartItems = document.querySelector("#cartItems");
+    const cartCount = document.querySelector("[data-cart-count]");
+    const cartTotal = document.querySelector("[data-cart-total]");
+    const adminRows = document.querySelector("#adminRows");
+    const toast = document.querySelector("#toast");
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      window.clearTimeout(showToast.timer);
+      showToast.timer = window.setTimeout(() => toast.classList.remove("show"), 2600);
+    }
+
+    function renderFilters() {
+      const categories = ["All", ...new Set(products.map((product) => product.category))];
+      productFilters.innerHTML = categories.map((category) => `
+        <button class="filter-btn ${state.filter === category ? "active" : ""}" type="button" data-filter="${category}">${category}</button>
+      `).join("");
+    }
+
+    function renderProducts() {
+      const visible = state.filter === "All" ? products : products.filter((product) => product.category === state.filter);
+      productGrid.innerHTML = visible.map((product) => `
+        <article class="product-card">
+          <div class="product-media">
+            <img src="${product.image}" alt="${product.name}">
+            <span class="badge">${product.badge}</span>
+          </div>
+          <div class="product-body">
+            <h3>${product.name}</h3>
+            <p>${product.description}</p>
+            <div class="meta">
+              <span>${product.size}</span>
+              ${product.benefits.map((benefit) => `<span>${benefit}</span>`).join("")}
+            </div>
+            <div class="product-footer">
+              <span class="price">${formatMoney(product.price)}</span>
+              <button class="small-btn" type="button" data-add="${product.id}">Add to Cart</button>
+            </div>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function getCartEntries() {
+      return Object.entries(state.cart).map(([id, qty]) => ({
+        product: products.find((item) => item.id === id),
+        qty
+      }));
+    }
+
+    function cartValue() {
+      return getCartEntries().reduce((total, entry) => total + entry.product.price * entry.qty, 0);
+    }
+
+    function renderCart() {
+      const entries = getCartEntries();
+      const qty = entries.reduce((sum, entry) => sum + entry.qty, 0);
+      cartCount.textContent = qty;
+      cartTotal.textContent = formatMoney(cartValue());
+
+      if (!entries.length) {
+        cartItems.innerHTML = '<p class="empty">Your cart is empty. Add Avoglow products from the shop.</p>';
+      } else {
+        cartItems.innerHTML = entries.map(({ product, qty }) => `
+          <div class="cart-item">
+            <img src="${product.image}" alt="${product.name}">
+            <div>
+              <h3>${product.name}</h3>
+              <p>${formatMoney(product.price)} · ${product.size}</p>
+              <div class="qty">
+                <button type="button" data-dec="${product.id}" aria-label="Decrease ${product.name}">−</button>
+                <strong>${qty}</strong>
+                <button type="button" data-inc="${product.id}" aria-label="Increase ${product.name}">+</button>
+              </div>
+            </div>
+            <strong>${formatMoney(product.price * qty)}</strong>
+          </div>
+        `).join("");
+      }
+
+      document.querySelector("[data-admin-cart]").textContent = formatMoney(cartValue());
+    }
+
+    function renderAdmin() {
+      document.querySelector("[data-admin-products]").textContent = products.length;
+      document.querySelector("[data-admin-stock]").textContent = products.reduce((sum, product) => sum + product.stock, 0);
+      adminRows.innerHTML = products.map((product) => `
+        <tr>
+          <td>${product.name}</td>
+          <td>${product.category}</td>
+          <td>${product.stock}</td>
+        </tr>
+      `).join("");
+    }
+
+    function openCart() {
+      document.body.classList.add("drawer-open");
+      document.querySelector(".cart-drawer").setAttribute("aria-hidden", "false");
+    }
+
+    function closeCart() {
+      document.body.classList.remove("drawer-open");
+      document.querySelector(".cart-drawer").setAttribute("aria-hidden", "true");
+    }
+
+    function openLogin() {
+      document.body.classList.add("modal-open");
+      document.querySelector(".login-modal").setAttribute("aria-hidden", "false");
+    }
+
+    function closeLogin() {
+      document.body.classList.remove("modal-open");
+      document.querySelector(".login-modal").setAttribute("aria-hidden", "true");
+    }
+
+    document.addEventListener("click", (event) => {
+      const filter = event.target.closest("[data-filter]")?.dataset.filter;
+      const addId = event.target.closest("[data-add]")?.dataset.add;
+      const incId = event.target.closest("[data-inc]")?.dataset.inc;
+      const decId = event.target.closest("[data-dec]")?.dataset.dec;
+
+      if (filter) {
+        state.filter = filter;
+        renderFilters();
+        renderProducts();
+      }
+
+      if (addId) {
+        state.cart[addId] = (state.cart[addId] || 0) + 1;
+        renderCart();
+        openCart();
+        showToast("Added to cart");
+      }
+
+      if (incId) {
+        state.cart[incId] += 1;
+        renderCart();
+      }
+
+      if (decId) {
+        state.cart[decId] -= 1;
+        if (state.cart[decId] <= 0) {
+          delete state.cart[decId];
+        }
+        renderCart();
+      }
+
+      if (event.target.closest("[data-open-cart]")) {
+        openCart();
+      }
+
+      if (event.target.closest("[data-close-cart]")) {
+        closeCart();
+      }
+
+      if (event.target.closest("[data-open-login]")) {
+        openLogin();
+      }
+
+      if (event.target.closest("[data-close-login]")) {
+        closeLogin();
+      }
+    });
+
+    document.querySelectorAll("#inlineLoginForm, #modalLoginForm").forEach((form) => {
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        closeLogin();
+        showToast("Demo login successful. Customer account features are ready for backend integration.");
+        form.reset();
+      });
+    });
+
+    document.querySelector("#checkoutForm").addEventListener("submit", (event) => {
+      event.preventDefault();
+      const entries = getCartEntries();
+      if (!entries.length) {
+        showToast("Add at least one product before submitting checkout.");
+        openCart();
+        return;
+      }
+      showToast("Checkout enquiry submitted. Atari Farms can confirm delivery and payment details.");
+      event.currentTarget.reset();
+    });
+
+    renderFilters();
+    renderProducts();
+    renderCart();
+    renderAdmin();
+  </script>
+</body>
+</html>
